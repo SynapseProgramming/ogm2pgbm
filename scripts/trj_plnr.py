@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import os
 import sys
 import cv2
@@ -6,7 +6,7 @@ import time
 import math
 import rospy
 import tf
-import thread
+import threading
 import numpy as np
 import matplotlib.pyplot as plt
 from geometry_msgs.msg import Pose, PoseStamped, PoseWithCovarianceStamped, PoseArray, Point, Quaternion, Twist, Vector3
@@ -41,7 +41,8 @@ class TrajectoryPlanner:
         self.imu_publisher = rospy.Publisher("/imu",  Imu, queue_size=1)
         self.clock_publisher = rospy.Publisher('/clock', Clock, queue_size=10)
         self.odom_publisher = rospy.Publisher('/odom', Odometry, queue_size=1)
-        thread.start_new_thread( self.pub_clock, () )
+        # thread.start_new_thread( self.pub_clock, () )
+        threading.Thread(target=self.pub_clock).start()
         #self.pos_publisher = rospy.Publisher("/robot/initialpose",  PoseWithCovarianceStamped, queue_size=1)
 
     def pub_clock(self):

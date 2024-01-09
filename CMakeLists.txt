@@ -19,7 +19,12 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-install(DIRECTORY scripts examples 
+catkin_install_python(PROGRAMS scripts/trj_plnr.py scripts/skeleton.py scripts/wavefront_coverage_path_planner.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+
+install(DIRECTORY scripts examples maps 
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS
 )
