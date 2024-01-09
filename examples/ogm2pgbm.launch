@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="prefix" default="robot_"/>
-  <arg name="map_file" default="$(find ogm2pgbm)/maps/museum.yaml"/>
+  <arg name="map_file" default="$(find ogm2pgbm)/maps/OGM_empty.pgm.yaml"/>
   <arg name="record" default="false"/>
   
   <node name="rviz" pkg="rviz" type="rviz" required="true"
@@ -15,7 +15,7 @@
   <node pkg="ogm2pgbm" name="trj_plnr" type="trj_plnr.py" output="screen"/>
 
   <node pkg="rosbag" type="record" name="rosbag_record_all"
-	args="record --all -O ogm2pgbm_sensordata.bag"
+	args="record --all -O $(find ogm2pgbm)/bagfiles/test_sensordata.bag"
         if="$(arg record)" />
   
 </launch>

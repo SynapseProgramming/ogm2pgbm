@@ -24,7 +24,7 @@ catkin_install_python(PROGRAMS scripts/trj_plnr.py scripts/skeleton.py scripts/w
 )
 
 
-install(DIRECTORY scripts examples maps 
+install(DIRECTORY scripts examples maps bagfiles
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS
 )
